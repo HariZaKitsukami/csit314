@@ -1,16 +1,16 @@
 class CompanyAccount:
-    def __init__(name, location):
+    def __init__(self, name, location):
         self.name = name;
         self.location = location;
 class jobListing:
-    def __init__(title, description, req_education_level, req_skills, req_years_experience, work_mode, location):
+    def __init__(self, title, description, req_education_level, req_skills, req_years_experience, work_mode, location):
         self.title = title;
         self.description = description;
         self.req_education_level = req_education_level;
         self.work_mode = work_mode;
         self.location = location;
 class CandidateAccount:
-    def __init__(full_name, education, major, years_experience):
+    def __init__(self, full_name, education, major, years_experience):
         self.full_name = full_name;
         self.education = education;
         self.major = major;
