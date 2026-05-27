@@ -1,7 +1,5 @@
 
 
-
-
 -- user tbale for login details
 CREATE TABLE User (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -9,7 +7,7 @@ CREATE TABLE User (
     password TEXT NOT NULL,
     role TEXT NOT NULL CHECK (role IN ('candidate', 'employer')),
     is_member INTEGER DEFAULT 0,
-    created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    created_at TIME DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -21,10 +19,10 @@ CREATE TABLE CandidateProfile(
     phone TEXT,
     education TEXT,
     major TEXT,
-    experience INTEGER DEFAULT 0,
+    experience INTEGER DEFAULT 0, 
     location TEXT,
     preferred_work_mode TEXT,
-    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    created_at TIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(user_id)
 );
 
@@ -37,8 +35,8 @@ CREATE TABLE EmployerProfile (
     company_name TEXT NOT NULL,
     location TEXT,
     description TEXT,
-    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    created_at TIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(user_id)
 );
 
@@ -55,10 +53,10 @@ CREATE TABLE JobListing (
     required_skills TEXT,
     work_mode TEXT,
     job_location TEXT,
-    salary TEXT,
+    salary FLOAT,
     benefits TEXT,
-    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    created_at TIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (employer_id) REFERENCES EmployerProfile(employer_id)
 ) ;
 
@@ -69,8 +67,8 @@ CREATE TABLE Application (
     candidate_id INTEGER NOT NULL,
     job_id INTEGER NOT NULL,
     status TEXT DEFAULT 'Pending',
-    application_date TEXT DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    application_date TIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (candidate_id) REFERENCES CandidateProfile(candidate_id),
     FOREIGN KEY (job_id) REFERENCES JobListing(job_id)
 );
@@ -82,8 +80,6 @@ CREATE TABLE Skill (
     skill_name TEXT NOT NULL,
     category TEXT
 );
-
-
 
 
 CREATE TABLE CandidateSkill (
@@ -107,7 +103,7 @@ CREATE TABLE Recommendation (
     user_id INTEGER NOT NULL,
     recommended_role TEXT,
     recommended_item_id INTEGER,
-    score REAL DEFAULT 0,
-    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    score INTEGER DEFAULT 0,
+    created_at TIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES User(user_id)
 );
