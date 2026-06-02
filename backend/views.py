@@ -5,8 +5,8 @@ from django.http import HttpRequest, HttpResponse, HttpResponseForbidden, JsonRe
 from django.shortcuts import render, get_object_or_404, redirect
 from .services import *
 
-
 # Create your views here.
+
 def login(request: HttpRequest) -> HttpResponse:
     if request.method != "POST":
         return HttpResponseForbidden("login must be a post request")
@@ -26,7 +26,7 @@ def register(request: HttpRequest) -> HttpResponse:
     lin(request, user)
     return redirect("dashboard")
 
-# Create your views here.
+
 def jobs_list(request):
     jobs = search_jobs()
 
@@ -107,3 +107,71 @@ def recommended_candidates(request, job_id):
         })
 
     return JsonResponse(data, safe=False)
+
+
+
+def recommend_jobs(request, candidate_id):
+
+    matches = recommend_jobs(candidate_id)
+
+    data = []
+
+    for job, score in matches:
+       data.append({
+           "id": job.id,
+           "job_title": job.job_title,
+           "job_location": job.job_location,
+           "work_mode": job.work_mode,
+       })
+
+    return JsonResponse(data, safe=False)
+
+
+def candidate_applications(request, candidate_id):
+
+    applications = get_candidate_app(candidate_id)
+
+    data = []
+
+    for app in applications:
+        data.append({
+            "application_id": app.id,
+            "candidate_id": app.candidate_id.id,
+            "status": app.status
+        })
+
+    return JsonResponse(data, safe=False)
+
+
+
+
+
+def job_applications(request, job_id):
+
+    applications = get_job_app(job_id)
+
+    data = []
+
+    for app in applications:
+        data.append({
+            "application_id": app.id,
+            "candidate_id": app.candidate_id.id,
+            "status": app.status
+        })
+
+    return JsonResponse(data, safe=False)
+
+
+def apply_to_job(request, job_id):
+
+    candidate_id = request.GET.get("candidate_id")
+
+    application = apply_job(
+        candidate_id,
+        job_id
+    )
+
+    return JsonResponse({
+        "application_id": application.id,
+        "status": application.status
+    })
