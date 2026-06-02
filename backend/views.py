@@ -1,4 +1,4 @@
-from site import register_readline
+#from site import register_readline
 from django.contrib.auth import authenticate, login as lin
 from backend.models import User
 from django.http import HttpRequest, HttpResponse, HttpResponseForbidden, JsonResponse
