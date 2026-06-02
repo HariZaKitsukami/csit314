@@ -10,11 +10,12 @@ class jobListing:
         self.work_mode = work_mode;
         self.location = location;
 class CandidateAccount:
-    def __init__(self, full_name, education, major, years_experience):
+    def __init__(self, full_name, education, major, years_experience, preffered_work_mode):
         self.full_name = full_name;
         self.education = education;
         self.major = major;
         self.years_experience = years_experience;
+        self.preffered_work_mode = preffered_work_mode;
 class Contact:
     def __init__(self, email, phone):
         self.email = email;
