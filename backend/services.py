@@ -8,8 +8,35 @@ from .models import(
     # candidateSkill,
     # jobSkill,
     # Recommendation
-    
 )
+
+#get all jobs
+def get_all_jobs():
+    return JobListing.objects.all()
+
+#return job details
+def get_job_details(job_id):
+    return JobListing.objects.get(id = job_id)
+
+
+#candidate profile
+def get_cand_profile(candidate_id):
+    return CandidateProfile.objects.get(id=candidate_id)
+
+#return employers jobs
+def get_employer_jobs(employer_id):
+    return JobListing.objects.filter(employer_id = employer_id)
+
+#create job listing
+def create_job_listing(employer_id, job_data):
+    return JobListing.objects.create(employer_id=employer_id, **job_data)
+
+
+#withdraw application
+def withdraw_application(application_id):
+    application = Application.objects.get(id=application_id)
+    application.delete()
+    return True
 
 def search_jobs(keyword = None, location = None, work_mode = None, skill = None): #def filters
     jobs = JobListing.objects.all()
