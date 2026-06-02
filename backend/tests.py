@@ -1,8 +1,7 @@
 from django.test import TestCase
 
 # Create your tests here.
-from backend.migrations.models import services;
-from ui-prototype-joe-/frontend import jobMatchingClasses;
+from backend.migrations.models import services, models;
 
 class scoreTestCase(TestCase)
     def setUp(self):
