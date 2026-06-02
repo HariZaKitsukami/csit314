@@ -38,7 +38,7 @@ class JobListing(models.Model):
     job_title = models.TextField()
     job_description = models.TextField()
     required_education = models.TextField()
-    required_education = models.IntegerField(default=0)
+    required_education = models.IntegerField(default=0) # tehre are 2 required_educations
     required_skills = models.TextField()
     work_mode = models.TextField()
     job_location = models.TextField()
