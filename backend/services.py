@@ -85,7 +85,7 @@ def cal_match_score(candidate, job): #plce holder.
         score += 10
 
     if candidate.preferred_work_mode and job.work_mode:
-        if candidate.preferred_word_mode.lower() == job.work_mode.lower():
+        if candidate.preferred_work_mode.lower() == job.work_mode.lower():
             score += 10
     
     return score
