@@ -6,10 +6,10 @@ from backend.services import cal_match_score, search_jobs;
 
 class testCase(TestCase):
     def setUp(self):
-        user1 = User.objects(role = CANDIDATE, is_member = False)
-        user2 = User.objects(role = CANDIDATE, is_member = False)
-        user3 = User.objects(role = EMPLOYER, is_member = False)
-        user4 = User.objects(role = EMPLOYER, is_member = False)
+        user1 = User.objects(role = "cand", is_member = False)
+        user2 = User.objects(role = "cand", is_member = False)
+        user3 = User.objects(role = "empl", is_member = False)
+        user4 = User.objects(role = "empl", is_member = False)
         candidate1 = CandidateProfile.objects.create(user_id = user1.user_id, full_name = "", phone = "" ,education = "bachelors", major = "computer science", experience = 2, location = "Wollongong", preferred_work_mode = "remote");
         candidate2 = CandidateProfile.objects.create(user_id = user2.user_id, full_name = "", phone = "" ,education = "bachelors", major = "computer science", experience = 3, location = "Wollongong", preferred_work_mode = "remote");
         employer1 = EmployerProfile.objects.create(user_id = user3.user_id, company_name ="", location = "Wollongong", description = "")
