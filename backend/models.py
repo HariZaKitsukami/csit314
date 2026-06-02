@@ -1,21 +1,23 @@
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
-class User(models.Model):
+class User(AbstractUser): 
     class Role(models.TextChoices):
         CANDIDATE = "cand", _("Candidate")
         EMPLOYER = "empl", _("Employer")
     
-    email = models.TextField()
-    password = models.TextField()
+    # email = models.TextField(unique=True)
+    # password = models.TextField()
     role = models.CharField(max_length=4, choices=Role)
     is_member = models.BooleanField()
     created_at = models.DateTimeField(default=timezone.now)
 
 class CandidateProfile(models.Model):
-    user_id = models.ForeignKey(User, models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE)
     full_name = models.TextField()
     phone = models.TextField()
     education = models.TextField()
@@ -26,7 +28,7 @@ class CandidateProfile(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
 class EmployerProfile(models.Model):
-    user_id = models.ForeignKey(User, models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE)
     company_name = models.TextField()
     location = models.TextField()
     description = models.TextField()
