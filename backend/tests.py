@@ -4,7 +4,7 @@ from django.test import TestCase
 from backend.models import CandidateProfile, EmployerProfile, JobListing;
 from backend.services import cal_match_score, search_jobs;
 
-class testCase(TestCase)
+class testCase(TestCase):
     def setUp(self):
         candidate1 = CandidateProfile.objects.create(full_name = "", phone = "" ,education = "bachelors", major = "computer science", experience = 2, location = "Wollongong", preferred_work_mode = "remote");
         candidate2 = CandidateProfile.objects.create(full_name = "", phone = "" ,education = "bachelors", major = "computer science", experience = 3, location = "Wollongong", preferred_work_mode = "remote");
