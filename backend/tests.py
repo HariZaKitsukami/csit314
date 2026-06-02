@@ -17,4 +17,4 @@ class testCase(TestCase):
         self.assertEqual(cal_match_score(candidate1, job2), 20);
     def testSearchJobs(self):
         jobList = search_jobs(keyword = "computer programmer");
-        sel.assertEqual(jobList[0], job1);
+        self.assertEqual(jobList[0], job1);
