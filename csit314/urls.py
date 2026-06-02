@@ -16,9 +16,61 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from backend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("frontend.urls")),
-    path("backend", include("backend.urls"))
+    path("backend", include("backend.urls")),
+
+    #jobs
+    path("api/jobs/", views.jobs_list, name="jobs_list"),
+    path("api/jobs/search/", views.jobs_search, name="jobs_search"),
+
+
+
+    #Candidates
+    path("api/candidates/search", views.candidates_search, name="candidates_search"),
+
+    
+
+
+
+    #recomendations
+    path("api/candidates/<int:candidate_id>/recommended-jobs/",
+         views.recommend_jobs,
+         name="recommend_jobs",
+    ),
+
+    path("api/jobs/<int:job_id>/recommended-candidates/",
+         views.recommended_candidates,
+         name="recommended_candidates"
+    ),
+
+
+
+
+
+
+    #applications
+path(
+    "api/candidates/<int:candidate_id>/applications/",
+    views.candidate_applications,
+    name="candidate_applications"
+),
+
+
+path(
+    "api/jobs/<int:job_id>/applications/",
+    views.job_applications,
+    name="job_applications"
+),
+
+path(
+    "api/jobs/<int:job_id>/apply",
+    views.apply_to_job,
+    name="applt_to_job"
+),
+
+
 ]
