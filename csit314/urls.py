@@ -20,8 +20,8 @@ from backend import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("frontend.urls")),
-    path("backend", include("backend.urls")),
+    #path("", include("frontend.urls")),
+   # path("backend", include("backend.urls")),
 
     #jobs
     path("api/jobs/", views.jobs_list, name="jobs_list"),
