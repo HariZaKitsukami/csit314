@@ -25,7 +25,7 @@ class testCase(TestCase):
         candidateList = search_candidates(keyword = "Clark Kent");
         self.assertEqual(self.candidate2, candidateList[0])
     def testGetCandProfile(self):
-        self.assertEqual(self.candiate1, get_cand_profile(self.candidate1.pk);
+        self.assertEqual(self.candiate1, get_cand_profile(self.candidate1.pk));
     def testMatchJobs(self):
-        jobList = [self.job1, self.job2]
-        self.assertEqual(get_match_jobs(self.candidate1.pk), jobList)
+        jobList = [self.job1, self.job2];
+        self.assertEqual(get_match_jobs(self.candidate1.pk), jobList);
