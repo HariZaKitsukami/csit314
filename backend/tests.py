@@ -31,4 +31,4 @@ class testCase(TestCase):
         self.assertEqual(get_match_jobs(self.candidate1.pk), jobList);
     def testRecomCandidates(self):
         candidateList = [(self.candidate1, 20), (self.candidate2, 10)];
-        self.assertEqual(get_match_jobs(self.job1.pk));
+        self.assertEqual(get_match_jobs(self.job1.pk), candidateList);
