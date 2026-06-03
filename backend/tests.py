@@ -2,7 +2,7 @@ from django.test import TestCase
 
 # Create your tests here.
 from backend.models import User, CandidateProfile, EmployerProfile, JobListing;
-from backend.services import cal_match_score, search_jobs, get_job_details;
+from backend.services import cal_match_score, search_jobs, get_job_details, search_candidates;
 
 class testCase(TestCase):
     def setUp(self):
