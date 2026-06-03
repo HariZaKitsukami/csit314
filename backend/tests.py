@@ -20,4 +20,4 @@ class testCase(TestCase):
         jobList = search_jobs(keyword = "computer programmer");
         self.assertEqual(jobList[0], self.job1);
     def testGetJobDetails(self):
-        self.assertEqual(self.job1, get_job_details(self.job1));
+        self.assertEqual(self.job1, get_job_details(self.job1.job_id));
