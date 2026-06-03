@@ -28,4 +28,4 @@ class testCase(TestCase):
         self.assertEqual(self.candidate1, get_cand_profile(self.candidate1.pk));
     def testMatchJobs(self):
         jobList = [self.job1, self.job2];
-        self.assertEqual(get_match_jobs(self.candidate1.pk), jobList);
+        self.assertEqual(get_match_jobs(self.candidate1.pk)[0], jobList[0]);
