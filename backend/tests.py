@@ -2,13 +2,13 @@ from django.test import TestCase
 
 # Create your tests here.
 from backend.models import User, CandidateProfile, EmployerProfile, JobListing;
-from backend.services import cal_match_score, search_jobs, get_job_details, search_candidates, get_cand_profile, get_match_jobs;
+from backend.services import cal_match_score, search_jobs, get_job_details, search_candidates, get_cand_profile, get_match_jobs, get_recom_candidates;
 
 class testCase(TestCase):
     def setUp(self):
         user1 = User.objects.create(role = "cand", is_member = False);
         self.candidate1 = CandidateProfile.objects.create(user_id = user1, full_name = "Bruce Wayne", phone = "" ,education = "1", major = "computer science", experience = 2, location = "Wollongong", preferred_work_mode = "remote");
-        self.candidate2 = CandidateProfile.objects.create(user_id = user1, full_name = "Clark Kent", phone = "" ,education = "2", major = "computer science", experience = 3, location = "Wollongong", preferred_work_mode = "remote");
+        self.candidate2 = CandidateProfile.objects.create(user_id = user1, full_name = "Clark Kent", phone = "" ,education = "2", major = "computer science", experience = 3, location = "Wollongong", preferred_work_mode = "in-person");
         employer1 = EmployerProfile.objects.create(user_id = user1, company_name ="", location = "Wollongong", description = "")
         self.job1 = JobListing.objects.create(employer_id = employer1, job_title = "computer programmer", job_description = "programming the computers", required_education = 1,required_skills = "",  work_mode = "Remote", job_location = "Wollongong", salary = "60.00", benefits = "");
         self.job2 = JobListing.objects.create(employer_id = employer1, job_title = "database programmer", job_description = "coding the database",required_education = 2,required_skills = "",  work_mode = "in-person", job_location = "Wollongong", salary = "60.00", benefits = "");
@@ -29,3 +29,6 @@ class testCase(TestCase):
     def testMatchJobs(self):
         jobList = [(self.job1, 20), (self.job2, 10)];
         self.assertEqual(get_match_jobs(self.candidate1.pk), jobList);
+    def testRecomCandidates(self):
+        candidateList = [(self.candidate1, 20), (aelf.candidate2, 10)];
+        self.assertEqual(get_match_jobs(self.job1.pk));
