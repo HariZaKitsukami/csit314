@@ -68,7 +68,7 @@ def search_candidates(keyword = None, location = None, education = None):#, #ski
     if education:
         candidates = candidates.filter(education__iexact= education)
 
-    
+    return candidates
 
 def cal_match_score(candidate, job): #plce holder.
     score = 0
