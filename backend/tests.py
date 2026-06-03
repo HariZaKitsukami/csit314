@@ -2,7 +2,7 @@ from django.test import TestCase
 
 # Create your tests here.
 from backend.models import User, CandidateProfile, EmployerProfile, JobListing;
-from backend.services import cal_match_score, search_jobs, get_job_details, search_candidates;
+from backend.services import cal_match_score, search_jobs, get_job_details, search_candidates, get_match_job;
 
 class testCase(TestCase):
     def setUp(self):
@@ -25,7 +25,7 @@ class testCase(TestCase):
         candidateList = search_candidates(keyword = "Clark Kent");
         self.assertEqual(self.candidate2, candidateList[0])
     def testGetCandProfile(self):
-        self.assertEqual(self.candiate1, get_cand_profile(self.candidate1.pk));
+        self.assertEqual(self.candidate1, get_cand_profile(self.candidate1.pk));
     def testMatchJobs(self):
         jobList = [self.job1, self.job2];
         self.assertEqual(get_match_jobs(self.candidate1.pk), jobList);
